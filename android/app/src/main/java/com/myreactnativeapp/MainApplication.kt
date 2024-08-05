@@ -1,5 +1,6 @@
 package com.myreactnativeapp
 
+import com.zmxv.RNSound.RNSoundPackage;
 import android.app.Application
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
@@ -32,6 +33,13 @@ class MainApplication : Application(), ReactApplication {
   override val reactHost: ReactHost
     get() = getDefaultReactHost(applicationContext, reactNativeHost)
 
+@Override
+protected List<ReactPackage> getPackages() {
+  return Arrays.<ReactPackage>asList(
+    new MainReactPackage(),
+    new RNSoundPackage() // Add this line
+  );
+}
   override fun onCreate() {
     super.onCreate()
     SoLoader.init(this, false)
